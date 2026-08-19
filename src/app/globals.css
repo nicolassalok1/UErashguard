@@ -1,0 +1,245 @@
+/* [INFRA] globals.css — tokens DA, purge du thème système, utilities.
+   Source de vérité visuelle : .claude/skills/rashguard-da/SKILL.md */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+  /* mapping shadcn → tokens DA (rashguard-da §2) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-inter);
+  --font-heading: var(--font-archivo);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: var(--radius);
+  --radius-2xl: var(--radius);
+  --radius-3xl: var(--radius);
+  --radius-4xl: var(--radius);
+}
+
+@theme {
+  /* tokens DA par rôle — utilities : bg-bg, bg-surface, bg-elevated,
+     text-fg, text-subtle, bg-brand / text-brand, text-error-soft */
+  --color-bg: #0b0b0c;
+  --color-surface: #141416;
+  --color-elevated: #1d1d20;
+  --color-fg: #f4f2ed;
+  --color-subtle: #a19d96;
+  --color-brand: #e22b1e;
+  --color-error-soft: #ffb4ab;
+
+  --font-display: var(--font-archivo);
+  --font-body: var(--font-inter);
+
+  /* eases figés — web-method §4 */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --spacing-gutter: 24px;
+  --container-site: 1440px;
+}
+
+/* Dark-only (rashguard-da §4) : pas de bloc prefers-color-scheme, pas de .dark */
+:root {
+  color-scheme: dark;
+  --background: #0b0b0c;
+  --foreground: #f4f2ed;
+  --card: #141416;
+  --card-foreground: #f4f2ed;
+  --popover: #1d1d20;
+  --popover-foreground: #f4f2ed;
+  --primary: #e22b1e;
+  --primary-foreground: #f4f2ed;
+  --secondary: #1d1d20;
+  --secondary-foreground: #f4f2ed;
+  --muted: #1d1d20;
+  --muted-foreground: #a19d96;
+  --accent: #1d1d20;
+  --accent-foreground: #f4f2ed;
+  --destructive: #ffb4ab;
+  --border: color-mix(in srgb, #f4f2ed 14%, transparent);
+  --input: color-mix(in srgb, #f4f2ed 18%, transparent);
+  --ring: #e22b1e;
+  --radius: 0px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/60;
+  }
+  html {
+    @apply font-body;
+  }
+  body {
+    @apply bg-bg text-fg antialiased;
+    font-synthesis: none;
+  }
+  ::selection {
+    background: var(--color-brand);
+    color: var(--color-fg);
+  }
+}
+
+@layer components {
+  /* échelle typographique — rashguard-da §3 */
+  .type-display-xl {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-stretch: 125%;
+    text-transform: uppercase;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+  }
+  .type-display-lg {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 125%;
+    text-transform: uppercase;
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+  }
+  .type-headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-stretch: 125%;
+    font-size: 1.75rem;
+    line-height: 1.1;
+  }
+  .type-body-lg {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  .type-body {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  .type-meta {
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .type-label {
+    font-weight: 600;
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* hairline — rashguard-da §2 */
+  .hairline {
+    border: 1px solid color-mix(in srgb, var(--color-fg) 14%, transparent);
+  }
+  .hairline-t {
+    border-top: 1px solid color-mix(in srgb, var(--color-fg) 14%, transparent);
+  }
+  .hairline-b {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-fg) 14%, transparent);
+  }
+
+  /* signature — hachures diagonales rouges (rashguard-da §6) */
+  .hatch {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--color-brand) 0,
+      var(--color-brand) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  }
+
+  /* soulignement rouge qui glisse (rashguard-da §5) */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: var(--color-brand);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s var(--ease-smooth);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .link-underline:hover::after,
+    .link-underline:focus-visible::after {
+      transform: scaleX(1);
+    }
+  }
+
+  /* scrim autorisé (seul dégradé permis — rashguard-da §4) */
+  .scrim-b {
+    background: linear-gradient(to top, rgb(0 0 0 / 0.72), transparent 55%);
+  }
+
+  .container-site {
+    margin-inline: auto;
+    width: 100%;
+    max-width: var(--container-site);
+    padding-inline: 20px;
+  }
+  @media (min-width: 1024px) {
+    .container-site {
+      padding-inline: 64px;
+    }
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* marquee — statique si reduced motion (web-method §4) */
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.marquee-track {
+  animation: marquee-x var(--marquee-duration, 28s) linear infinite;
+  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  .marquee-paused:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
