@@ -28,7 +28,8 @@ Marque malaisienne à audience internationale : le marketing ne mentionne aucune
 ## 4. Personnes réelles
 
 - **Aucune citation inventée.** Pas de section « testimonials » avec fausses quotes : les photos d'événement réelles en tiennent lieu. Tout futur emplacement de citation porte `[CITATION À VALIDER]` et ne s'affiche pas.
-- Photos fournies par la marque (athlètes, famille, enfants) : droits présumés côté client — **à confirmer par écrit avant mise en production**, en particulier pour les mineurs (série Sabai_May). Le POC n'utilise pas les photos d'enfants sur les pages commerciales (home/shop/checkout) ; elles restent réservées à la section « Our Story » si validées.
+- Photos fournies par la marque (athlètes, famille, enfants) : droits présumés côté client — **à confirmer par écrit avant mise en production**, en particulier pour les mineurs (série Sabai_May).
+- **2026-08-30 — dérogation client.** Nicolas a confirmé oralement détenir les droits sur les deux photos de gants portés par un enfant (`assets-src/sabai-kids-gloves-{guard,close}.jpg`) et a demandé leur mise en ligne. Elles sont publiées sur la fiche `kids-boxing-gloves`, en positions 2 et 3 — l'image 1 reste le packshot sans personne (vignette du shop et de la carte produit). **⚠ Accord à formaliser par écrit avant mise en production.** Les autres photos d'enfants (série Sabai_May) restent hors des pages commerciales.
 - Aucun visage généré par IA.
 
 ## 5. Contenu de démonstration (contrainte active n°2 — tunnel shadow)

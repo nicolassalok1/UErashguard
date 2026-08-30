@@ -15,18 +15,21 @@ const QUALITY = 82;
 /** destination → fichier source */
 const MAP = {
   // — UV Long Sleeve (produit hero)
-  "products/uv-ls-model.webp": "WhatsApp_Image_20260819_at_12.20.00_2.jpeg",
-  "products/uv-ls-mockup.webp": "WhatsApp_Image_20260819_at_12.20.00.jpeg",
-  "products/uv-ls-gloves.webp": "WhatsApp_Image_20260819_at_12.19.59.jpeg",
+  // retiré 2026-08-30 (annotation client — mauvais produit / mockup) :
+  // "products/uv-ls-model.webp": "WhatsApp_Image_20260819_at_12.20.00_2.jpeg",
+  // "products/uv-ls-mockup.webp": "WhatsApp_Image_20260819_at_12.20.00.jpeg",
+  // "products/uv-ls-gloves.webp": "WhatsApp_Image_20260819_at_12.19.59.jpeg",
   "brand/uv-fps50.webp": "WhatsApp_Image_20260819_at_12.20.00_1.jpeg",
-  "lifestyle/uv-rider.webp": "WhatsApp_Image_20260819_at_12.19.56.jpeg",
+  // bandes noires du export WhatsApp retirées (trim) — source recadrée
+  "lifestyle/uv-rider.webp": "sabai-uv-rider.jpg",
   // — Boxing gloves
   "products/gloves-set.webp": "DSC00618.jpg",
   "products/gloves-detail.webp": "DSC00621.jpg",
   "products/gloves-strap.webp": "DSC00623.jpg",
   "products/gloves-pair.webp": "DSC00625.jpg",
-  "products/gloves-red.webp": "WhatsApp_Image_20260819_at_12.20.01.jpeg",
-  "products/gloves-blue.webp": "WhatsApp_Image_20260819_at_12.20.02.jpeg",
+  // coloris rouge/bleu supprimés du catalogue (annotation client) :
+  // "products/gloves-red.webp": "WhatsApp_Image_20260819_at_12.20.01.jpeg",
+  // "products/gloves-blue.webp": "WhatsApp_Image_20260819_at_12.20.02.jpeg",
   // — MMA gloves
   "products/mma-pair.webp": "DSC00635.jpg",
   "products/mma-fist.webp": "DSC00632.jpg",
@@ -35,8 +38,11 @@ const MAP = {
   "products/mma-grip.webp": "DSC00634.jpg",
   "products/mma-black.webp": "WhatsApp_Image_20260819_at_12.20.01_1.jpeg",
   // — Shinguards
-  "products/shinguards.webp": "DSC00626.jpg",
-  "products/shinguards-gloves.webp": "DSC006562.jpg",
+  // DSC00626 = gros plan de gant sur tatami, pas une protection tibia :
+  // retiré de la galerie Shinguards le 2026-08-30 (les 3 photos studio la remplacent).
+  // "products/shinguards.webp": "DSC00626.jpg",
+  // DSC006562 = gi noir porté (femme) — reclassé vers BJJ Gi (annotation client 2026-08-30)
+  "products/gi-black-worn-f.webp": "DSC006562.jpg",
   // — Gi black
   "products/gi-black-flat.webp": "DSC00646.jpg",
   "products/gi-black-open.webp": "DSC00638.jpg",
@@ -51,7 +57,8 @@ const MAP = {
   "products/rashguard-back.webp": "DSC00650.jpg",
   "products/rashguard-detail.webp": "DSC00669.jpg",
   // — Belt
-  "products/belt.webp": "DSC00680.jpg",
+  "products/belt.webp": "sabai-belt-detail.jpg",
+  "products/belt-full.webp": "sabai-belt-full.jpg",
   // — Lifestyle / compétition (N&B→couleur via RevealImage, pas en data)
   "lifestyle/elephant-back.webp": "WhatsApp_Image_20260819_at_12.19.57_1.jpeg",
   "lifestyle/comp-grappling.webp": "WhatsApp_Image_20260819_at_12.19.56_1.jpeg",
@@ -61,9 +68,37 @@ const MAP = {
   "lifestyle/comp-flag.webp": "WhatsApp_Image_20260819_at_12.19.59_1.jpeg",
   "lifestyle/comp-medal.webp": "WhatsApp_Image_20260819_at_12.19.56_2.jpeg",
   // — Story (adultes uniquement — GUARDRAILS §4)
-  "brand/flag-team.webp": "Sabai_May9.jpg",
+  // photo Story remplacée (décor à nettoyer — annotation client) :
+  // "brand/flag-team.webp": "Sabai_May9.jpg",
   "brand/belt-detail.webp": "DSC00680.jpg",
   "brand/gi-detail.webp": "DSC00660.jpg",
+  // — Short sleeve « What You Fight For? » (nouveau produit, photos 2026-08-30)
+  "products/ss-rash-front.webp": "sabai-ss-rash-front.jpg",
+  "products/ss-rash-back.webp": "sabai-ss-rash-back.jpg",
+  "products/ss-rash-worn.webp": "sabai-ss-rash-worn.jpg",
+  "products/ss-rash-worn-back.webp": "sabai-ss-rash-worn-back.jpg",
+  // — MMA / fight shorts (nouveau produit)
+  "products/shorts-flat.webp": "sabai-shorts-flat.jpg",
+  "products/shorts-back.webp": "sabai-shorts-back.jpg",
+  "products/shorts-side.webp": "sabai-shorts-side.jpg",
+  "products/shorts-glove.webp": "sabai-shorts-glove.jpg",
+  // — Gamme de tailles gants (du kids à l'adulte) — packshot sans personne
+  "products/gloves-sizes.webp": "sabai-gloves-sizes.jpg",
+  // GUARDRAILS §4 — droits à l'image du mineur confirmés oralement par le client
+  // (Nicolas, 2026-08-30). ⚠ À FORMALISER PAR ÉCRIT avant mise en production.
+  "products/kids-gloves-guard.webp": "sabai-kids-gloves-guard.jpg",
+  "products/kids-gloves-close.webp": "sabai-kids-gloves-close.jpg",
+  // — Shinguards portés (remplacent la photo de gi mal classée)
+  "products/shinguards-worn.webp": "sabai-shin-worn-front.jpg",
+  "products/shinguards-side.webp": "sabai-shin-worn-side.jpg",
+  "products/shinguards-pair.webp": "sabai-shin-worn-pair.jpg",
+  // — Gants portés / kit complet
+  "products/gloves-worn.webp": "sabai-gloves-worn.jpg",
+  "lifestyle/kit-full.webp": "sabai-kit-full.jpg",
+  "lifestyle/kit-studio.webp": "sabai-kit-studio.png",
+  // — Gym bag
+  "products/bag.webp": "sabai-bag.jpg",
+  "products/bag-fightfor.webp": "sabai-bag-fightfor.png",
 };
 
 let done = 0;

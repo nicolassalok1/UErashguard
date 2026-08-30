@@ -18,6 +18,8 @@ type RevealImageProps = {
   priority?: boolean;
   /** signature DA : calque N&B sous calque couleur révélé au scroll */
   colorize?: boolean;
+  /** `contain` pour les planches studio fond clair — rashguard-da §4bis */
+  fit?: "cover" | "contain";
   imgClassName?: string;
 };
 
@@ -28,8 +30,10 @@ export function RevealImage({
   className,
   priority,
   colorize,
+  fit = "cover",
   imgClassName,
 }: RevealImageProps) {
+  const fitClass = fit === "contain" ? "object-contain" : "object-cover";
   const scope = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -81,11 +85,7 @@ export function RevealImage({
         fill
         sizes={sizes}
         priority={priority}
-        className={cn(
-          "object-cover",
-          colorize && "grayscale",
-          imgClassName,
-        )}
+        className={cn(fitClass, colorize && "grayscale", imgClassName)}
       />
       {colorize && (
         <div data-color-layer className="absolute inset-0" aria-hidden>
@@ -94,7 +94,7 @@ export function RevealImage({
             alt=""
             fill
             sizes={sizes}
-            className={cn("object-cover", imgClassName)}
+            className={cn(fitClass, imgClassName)}
           />
         </div>
       )}

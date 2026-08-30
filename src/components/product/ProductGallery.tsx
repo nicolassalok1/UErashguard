@@ -1,6 +1,9 @@
 /* [SHOP] Galerie produit — structure d'après 21st.dev #7820 (image principale
    + vignettes, navigation clavier), re-tokenisée DA. Mobile : scroll-snap natif
-   (CONVENTIONS §6). */
+   (CONVENTIONS §6).
+   MAJ 2026-08-30 : photos `plate` (studio fond clair) affichées entières
+   (`object-contain`) et ratio de cadre 4/3 quand la série est studio —
+   rashguard-da §4bis. */
 "use client";
 
 import { useState } from "react";
@@ -20,10 +23,18 @@ export function ProductGallery({
   const images = product.images;
   const prev = () => setIndex((i) => (i === 0 ? images.length - 1 : i - 1));
   const next = () => setIndex((i) => (i === images.length - 1 ? 0 : i + 1));
+  /* le ratio du cadre est fixé par la série (1re image) : pas de saut de
+     layout en naviguant dans la galerie. */
+  const studio = images[0].plate === true;
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="relative aspect-[4/5] w-full overflow-hidden border border-border bg-surface">
+      <div
+        className={cn(
+          "relative w-full overflow-hidden border border-border bg-surface",
+          studio ? "aspect-[4/3]" : "aspect-[4/5]",
+        )}
+      >
         <Image
           key={images[index].src}
           src={images[index].src}
@@ -31,7 +42,9 @@ export function ProductGallery({
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
           priority={priority}
-          className="object-cover"
+          className={cn(
+            images[index].plate ? "object-contain p-6 lg:p-10" : "object-cover",
+          )}
         />
         {images.length > 1 && (
           <>
@@ -77,7 +90,8 @@ export function ProductGallery({
                 fill
                 sizes="80px"
                 className={cn(
-                  "object-cover transition-opacity",
+                  "transition-opacity",
+                  img.plate ? "object-contain p-1.5" : "object-cover",
                   index === i ? "opacity-100" : "opacity-60",
                 )}
               />

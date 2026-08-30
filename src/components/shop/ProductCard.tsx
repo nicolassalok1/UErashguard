@@ -1,6 +1,8 @@
 /* [SHOP] Carte produit — structure d'après 21st.dev #17441
    (MinimalProductCard, révélation couleur circulaire au curseur) et #8286,
-   re-tokenisée DA : N&B → couleur, hairlines, coins architecturaux. */
+   re-tokenisée DA : N&B → couleur, hairlines, coins architecturaux.
+   MAJ 2026-08-30 : les photos `plate` (shoot studio fond clair) sont
+   encadrées `object-contain` sur le noir, jamais recadrées — rashguard-da §4bis. */
 "use client";
 
 import { useRef, useState } from "react";
@@ -36,6 +38,7 @@ export function ProductCard({
   };
 
   const img = product.images[0];
+  const fit = img.plate ? "object-contain p-6" : "object-cover";
 
   return (
     <Link
@@ -61,7 +64,7 @@ export function ProductCard({
           alt={img.alt}
           fill
           sizes="(max-width: 768px) 70vw, 25vw"
-          className="object-cover grayscale"
+          className={cn("grayscale", fit)}
         />
         {/* couleur révélée en cercle depuis le curseur */}
         <div
@@ -77,7 +80,7 @@ export function ProductCard({
             alt=""
             fill
             sizes="(max-width: 768px) 70vw, 25vw"
-            className="object-cover"
+            className={fit}
           />
         </div>
         {product.badge && (
@@ -91,7 +94,7 @@ export function ProductCard({
         <span className="type-meta text-subtle">{product.category}</span>
         <div className="flex items-baseline justify-between gap-3">
           <h3 className="type-body font-medium text-fg">{product.name}</h3>
-          <span className="type-body text-subtle">
+          <span className="type-body shrink-0 whitespace-nowrap text-subtle">
             {formatPrice(product.price)}
           </span>
         </div>

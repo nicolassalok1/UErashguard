@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# planches de contact de travail (non livrées)
+_contact-sheet*.jpg
+_to_delete/

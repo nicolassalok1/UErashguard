@@ -21,8 +21,8 @@ export default function ShopPage() {
           All gear
         </RevealText>
         <p className="type-body max-w-lg text-subtle">
-          Everything we make, from the mats to open water. Built by fighters
-          since 2015.
+          Everything we make, from the mats to open water. Built by fighters —
+          in Brasil since 2017, in Malaysia since 2022.
         </p>
       </div>
 

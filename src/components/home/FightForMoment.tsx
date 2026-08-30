@@ -23,7 +23,8 @@ export function FightForMoment() {
             {SITE.tagline}
           </RevealText>
           <p className="type-meta text-fg/80">
-            The question stitched on every glove since 2015.
+            The question stitched on every glove, belt and pair of shorts we
+            make.
           </p>
         </div>
       </div>
